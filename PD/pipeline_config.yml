@@ -1,0 +1,10 @@
+nodes:
+- input.visual:
+   source: sign_language
+- custom_nodes.dabble.store_and_load
+- custom_nodes.model.sign_language_classifier
+#- output.screen
+- output.csv_writer:
+   stats_to_track: ["filename", "pred_label", "pred_score"]
+   file_path: sign_language_predictions.csv
+   logging_interval: 0

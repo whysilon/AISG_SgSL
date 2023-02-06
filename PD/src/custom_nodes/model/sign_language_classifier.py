@@ -19,8 +19,7 @@ IMG_WIDTH = 60
 SEQUENCE_LENGTH = 24
 
 class Node(AbstractNode):
-   """Initializes and uses a CNN to predict if an image frame shows a normal
-   or defective casting.
+   """Initializes and uses a RNN to predict if a video frame of length 24 is a certain sign langauge
    """
    def __init__(self, config: Dict[str, Any] = None, **kwargs: Any) -> None:
       super().__init__(config, node_path=__name__, **kwargs)
@@ -36,18 +35,22 @@ class Node(AbstractNode):
       Returns:
             outputs (dict): Dictionary with keys "pred_label" and "pred_score".
       """
-      #print("cp 2")
+      # Take input out from the custom dabble node which processes
+      # the previous 24 frames
       imgs = inputs["img"]
       imgs = np.expand_dims(imgs, axis=0)
+      
+      # Check if the frames length is correct
       if(imgs.shape[1] == 24):
             predictions = self.model.predict(imgs)
             #print(predictions)
             score = tf.nn.softmax(predictions[0])
-            print(score)
+            #print(score)
             return {
                   "pred_label": self.class_label_map[np.argmax(score)],
                   "pred_score": 100.0 * np.max(score),
             }
+      # Else return empty output
       else:
             return {
                   "pred_label": "None",

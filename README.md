@@ -1,5 +1,5 @@
 # AI Singapore Competition Project
-Computer Vision modelling for Singapore Sign Language. Used [PeekingDuck](https://peekingduck.readthedocs.io/en/stable/master.html) for model inference and adapted code from mainly [this video](https://www.youtube.com/watch?v=QmtSkq3DYko) to do action recognition
+Computer Vision modelling for Singapore Sign Language. Used [PeekingDuck](https://peekingduck.readthedocs.io/en/stable/master.html) for model inference and adapted code from mainly [this video](https://www.youtube.com/watch?v=QmtSkq3DYko) to do action recognition.
 
 ## Model
 
